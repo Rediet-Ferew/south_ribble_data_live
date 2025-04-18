@@ -1,0 +1,20 @@
+{
+    "monthly_breakdown": [
+        {
+            "month": "2025-03",
+            "total_customers": 13,
+            "new_customers": 13,
+            "returning_customers": 0,
+            "new_percentage": 100.0,
+            "returning_percentage": 0.0,
+            "total_revenue": 1717.6,
+            "new_customer_revenue": 1717.6,
+            "returning_customer_revenue": 0.0
+        }
+    ],
+    "Basic LTV": 132.12307692307692,
+    "Advanced LTV": 20746.134206219314,
+    "Average Purchase Value": 12.629411764705882,
+    "Average Purchase Frequency": 10.461538461538462,
+    "Average Customer LifeSpan (Months)": 157.0212765957447
+}

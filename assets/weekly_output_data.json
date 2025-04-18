@@ -1,0 +1,59 @@
+{
+    "weekly_breakdown": [
+        {
+            "week": "Mar 03, 2025 - Mar 09, 2025",
+            "total_customers": 7,
+            "new_customers": 7,
+            "returning_customers": 0,
+            "new_percentage": 100.0,
+            "returning_percentage": 0.0,
+            "total_revenue": 467.09999999999997,
+            "new_customer_revenue": 467.09999999999997,
+            "returning_customer_revenue": 0.0
+        },
+        {
+            "week": "Mar 10, 2025 - Mar 16, 2025",
+            "total_customers": 5,
+            "new_customers": 0,
+            "returning_customers": 5,
+            "new_percentage": 0.0,
+            "returning_percentage": 100.0,
+            "total_revenue": 331.5,
+            "new_customer_revenue": 0.0,
+            "returning_customer_revenue": 331.5
+        },
+        {
+            "week": "Mar 17, 2025 - Mar 23, 2025",
+            "total_customers": 7,
+            "new_customers": 2,
+            "returning_customers": 5,
+            "new_percentage": 28.57,
+            "returning_percentage": 71.43,
+            "total_revenue": 382.5,
+            "new_customer_revenue": 85.0,
+            "returning_customer_revenue": 297.5
+        },
+        {
+            "week": "Mar 24, 2025 - Mar 30, 2025",
+            "total_customers": 8,
+            "new_customers": 2,
+            "returning_customers": 6,
+            "new_percentage": 25.0,
+            "returning_percentage": 75.0,
+            "total_revenue": 392.0,
+            "new_customer_revenue": 40.0,
+            "returning_customer_revenue": 352.0
+        },
+        {
+            "week": "Mar 31, 2025 - Apr 06, 2025",
+            "total_customers": 8,
+            "new_customers": 3,
+            "returning_customers": 5,
+            "new_percentage": 37.5,
+            "returning_percentage": 62.5,
+            "total_revenue": 457.5,
+            "new_customer_revenue": 154.0,
+            "returning_customer_revenue": 303.5
+        }
+    ]
+}
