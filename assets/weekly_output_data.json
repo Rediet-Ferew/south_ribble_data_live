@@ -1704,6 +1704,17 @@
             "total_revenue": 27112.329999999998,
             "new_customer_revenue": 5040.6,
             "returning_customer_revenue": 22071.729999999996
+        },
+        {
+            "week": "Apr 14, 2025 - Apr 20, 2025",
+            "total_customers": 1074,
+            "new_customers": 147,
+            "returning_customers": 927,
+            "new_percentage": 13.69,
+            "returning_percentage": 86.31,
+            "total_revenue": 23954.2,
+            "new_customer_revenue": 5018.3,
+            "returning_customer_revenue": 18935.9
         }
     ]
 }

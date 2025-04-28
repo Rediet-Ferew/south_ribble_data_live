@@ -62,17 +62,20 @@ def clean_and_merge_data(contents_list):
         dfs.append(df)
 
     merged_df = pd.concat(dfs, ignore_index=True)
-    df_needed = merged_df[['PHONE NO', 'DRIVER PRICE', 'JOB DATE']]
+    df_needed = merged_df[['ACCOUNT REF', 'JOB PRICE', 'JOB STATUS']]
     df_needed.columns = ['phone', 'price', 'job_date']
     df_cleaned = df_needed[df_needed["phone"].notna() & (df_needed["phone"] != "")]
 
     df_cleaned['phone'] = df_cleaned['phone'].astype(str).str.strip()
-
     df_cleaned.loc[:, "job_date"] = pd.to_datetime(df_cleaned["job_date"], format="%d/%m/%y %H:%M:%S", errors='coerce', dayfirst=True).dt.date
 
     return df_cleaned
 
 
+import pandas as pd
+import os
+import json
+from datetime import datetime
 
 DATE_FORMAT = '%Y-%m-%d'  # Enforce this format for consistency
 
@@ -81,7 +84,7 @@ def weekly_breakdown(df):
     df['job_date'] = pd.to_datetime(df['job_date'], format=DATE_FORMAT, errors='coerce')
     df = df.sort_values('job_date')
 
-    # Filter out dates before first Monday (2022-01-03)
+    # Filter out dates before first Monday (2023-01-02)
     df = df[df['job_date'] >= pd.to_datetime('2022-01-03')]
 
     # Load existing first visit data
@@ -90,6 +93,9 @@ def weekly_breakdown(df):
             first_visit_data = json.load(f)
     else:
         first_visit_data = []
+
+    # Sort first visit data based on the first_visit_date
+    first_visit_data = sorted(first_visit_data, key=lambda x: pd.to_datetime(x['first_visit_date'], format=DATE_FORMAT))
 
     # Convert JSON to dict with strict date parsing
     json_lookup = {}
@@ -186,12 +192,12 @@ def weekly_breakdown(df):
     }
 
 
+
 def generate_visuals(df):
     # Create a copy to avoid modifying original data
     df_display = df.copy()
     
-    # Add delete button column
-    df_display['delete'] = '❌'  # Use lowercase 'delete' for column ID
+
     
     # Create figures
     fig_line = px.line(df, x='week', y=['new_customers', 'returning_customers'], markers=True)
@@ -214,16 +220,9 @@ def generate_visuals(df):
     # Define columns with proper delete button configuration
     columns = [
         {"name": col, "id": col} 
-        for col in df.columns if col != 'delete'
-    ] + [
-        {
-            "name": "Delete",
-            "id": "delete",
-            "presentation": "markdown",
-            "type": "text",
-            "deletable": False
-        }
-    ]
+        for col in df.columns
+    ] 
+    
 
     return html.Div([
         html.H2("📊 Data Table"),
@@ -232,13 +231,13 @@ def generate_visuals(df):
             columns=columns,
             data=df_display.round(2).to_dict('records'),
             style_table={'overflowX': 'auto'},
-            style_cell_conditional=[
-                {
-                    'if': {'column_id': 'delete'},
-                    'textAlign': 'center',
-                    'width': '100px'
-                }
-            ],
+            # style_cell_conditional=[
+            #     {
+            #         'if': {'column_id': 'delete'},
+            #         'textAlign': 'center',
+            #         'width': '100px'
+            #     }
+            # ],
         ),
         html.H2("📈 Weekly Trends"),
         dcc.Graph(figure=fig_line),
@@ -289,7 +288,7 @@ def unified_callback(contents, pathname, stored_data):
             
             
             processed_data = weekly_breakdown(new_df)
-            print(processed_data)
+            
             new_weekly_breakdown = processed_data['weekly_breakdown'].to_dict(orient='records')
             existing_data = load_processed_data()
             if existing_data:
@@ -320,7 +319,7 @@ def unified_callback(contents, pathname, stored_data):
             
         except Exception as e:
             file_message = f"⚠️ Error: {str(e)}"
-            return dash.no_update, file_message, dash.no_update, dash.no_update, dash.no_update
+            return dash.no_update, file_message, dash.no_update, dash.no_update
     
     elif trigger == 'url':
         existing_data = load_processed_data()
