@@ -417,11 +417,22 @@
             "total_revenue": 100285.86,
             "new_customer_revenue": 17648.9,
             "returning_customer_revenue": 82636.95999999999
+        },
+        {
+            "month": "2025-04",
+            "total_customers": 2898,
+            "new_customers": 642,
+            "returning_customers": 2256,
+            "new_percentage": 22.15,
+            "returning_percentage": 77.85,
+            "total_revenue": 103286.34,
+            "new_customer_revenue": 22352.4,
+            "returning_customer_revenue": 80933.94
         }
     ],
-    "Basic LTV": 31.60600693350142,
-    "Advanced LTV": 1905.1682514421973,
-    "Average Purchase Value": 11.307459691058744,
-    "Average Purchase Frequency": 2.7951465490072485,
-    "Average Customer LifeSpan (Months)": 60.27867599506144
+    "Basic LTV": 35.64055900621118,
+    "Advanced LTV": 2181.585164500357,
+    "Average Purchase Value": 12.690298562476963,
+    "Average Purchase Frequency": 2.808488612836439,
+    "Average Customer LifeSpan (Months)": 61.21074487412406
 }
