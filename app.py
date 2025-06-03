@@ -57,7 +57,31 @@ app.layout = html.Div([
                     'margin-right': '15px'
                 }
             )),
+
+            dbc.NavItem(dcc.Link(
+                "WEEKLY-AIRPORT",
+                href="/weekly-airport",
+                className="nav-link",
+                style={
+                    'font-size': '18px',
+                    'color': 'white',
+                    'font-weight': 'bold',
+                    'margin-right': '15px'
+                }
+            )),
+            dbc.NavItem(dcc.Link(
+                "MONTHLY-AIRPORT",
+                href="/monthly-airport",
+                className="nav-link",
+                style={
+                    'font-size': '18px',
+                    'color': 'white',
+                    'font-weight': 'bold',
+                    'margin-right': '15px'
+                }
+            )),
         ],
+
         brand="South Ribble Data Analysis",
         brand_href="/",  # Make brand clickable to return home
         color="primary",
